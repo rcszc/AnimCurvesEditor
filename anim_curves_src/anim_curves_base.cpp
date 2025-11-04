@@ -1,9 +1,13 @@
 // anim_curves_base. RCSZ.
+#include <iostream>
+#include <string>
 #include <float.h>
 
 #define IMC_CONTROL_BASE_MATHS
 #include "anim_curves_base_ms.h"
 #include "anim_curves_base.h"
+
+using namespace std;
 
 ImVec4 FLOAT_COLOR_CLAMP(const ImVec4& color) {
 	return ImVec4(
@@ -108,7 +112,9 @@ namespace ACE_CONTROL_BASE {
 			// ÖØµþ»æÖÆ: "InvisibleButton" & "Button".
 			ImVec2 ReposTemp = ImGui::GetCursorPos();
 			{
-				ReturnStatFlag = ImGui::InvisibleButton(name, AnimStatSize[0]);
+				string InvButton(name);
+				InvButton += "#INVB";
+				ReturnStatFlag = ImGui::InvisibleButton(InvButton.c_str(), AnimStatSize[0]);
 				TypeModeIndex = NULL;
 				
 				if (!ImGui::IsItemHovered() && !ImGui::IsMouseDown(0)) TypeModeIndex = 0; // status: normal.
